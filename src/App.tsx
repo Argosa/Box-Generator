@@ -1,24 +1,16 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import Box from './components/Box';
+import InputBox from './components/InputBox';
 
 function App() {
+  const [colors, setColors] = useState<string[]>(['blue', 'turquoise', 'Aqua']);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <InputBox colors={colors} setColors={setColors}/>
+      {colors.map(color => (
+        <Box color={color} height={200} width={200}/>
+      ))}
     </div>
   );
 }
